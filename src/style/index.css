@@ -52,6 +52,23 @@
   text-decoration: none;
 }
 
+.header-basket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.basket-icon {
+  height: 18px;
+  width: 18px;
+  cursor: pointer;
+  color: black;
+}
+
+.basket-price {
+  color: black;
+}
+
 /*---- STORE ----*/
 .store-list {
   display: flex;
@@ -64,6 +81,7 @@
 .store-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-direction: column;
   gap: 20px;
   padding: 25px;
@@ -73,6 +91,7 @@
 
 .title-item {
   text-align: center;
+  flex: 0 0 10%;
 }
 
 /*# sourceMappingURL=index.css.map */
