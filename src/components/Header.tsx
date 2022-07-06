@@ -1,17 +1,36 @@
-import React, {FC} from 'react';
+import React, {FC, useState} from 'react';
 import { NavLink } from "react-router-dom";
 import {IconContext} from "react-icons";
 import {BsBasket} from "react-icons/bs";
 import MyButton from "./UI/button/MyButton";
+import MyModal from "./UI/modal/MyModal";
+import Basket from "./Basket";
 
 interface headerProps {
     logo: string
 }
 
 const Header:FC<headerProps> = (props) => {
-    return (
+    {/*---- state modal ----*/}
+    const [modal, setModal] = useState<boolean>(false)
 
+    {/*---- functions to basket----*/}
+    const openBasket = (event:React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+        setModal(true)
+    }
+
+    return (
         <header className='header'>
+            {/*---- modal window ----*/}
+            <MyModal
+                visible={modal}
+                setVisible={setModal}
+            >
+                <Basket/>
+            </MyModal>
+
+            {/*---- content ----*/}
             <div className='container'>
                 <div className='header-wrapper'>
                     <div className='header-logo'>{props.logo}</div>
@@ -28,7 +47,10 @@ const Header:FC<headerProps> = (props) => {
                             className='nav-link'
                             to="/about"
                         >ABOUT</NavLink>
-                        <MyButton style={{background: "#fff", padding: 0, border: "none"}}>
+                        <MyButton
+                            onClick={openBasket}
+                            style={{background: "#fff", padding: 0, border: "none"}}
+                        >
                             <div className='header-basket'>
                                 <IconContext.Provider value={{className: "basket-icon"}}>
                                     <div>

@@ -1,19 +1,29 @@
 import React, {FC, useState} from 'react';
 import MyButton from "./UI/button/MyButton";
 import MyImage from "./UI/image/MyImage";
-import {useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
+import {useTypedSelectors} from "../hooks/useTypedSelector";
+import {addItemToBasketAction} from "../store/reducers/basketReducer";
+
 
 interface IStoreItem {
     props?: any
 }
 
 const StoreItem:FC<IStoreItem> = ({props}) => {
+    {/*---- used dispatch ----*/}
+    const dispatch = useDispatch()
+
+    {/*---- create state basket----*/}
+    const stateBasket = useTypedSelectors(item => item.basket.basket)
+
     {/*---- state button ----*/}
     const [disabled, setDisabled] = useState<boolean>(false)
 
     {/*---- Add item to basket ----*/}
     const addItemToBasket = (event:React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
+        dispatch(addItemToBasketAction(props))
         setDisabled(true)
     }
 
