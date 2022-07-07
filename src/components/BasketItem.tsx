@@ -1,4 +1,4 @@
-import React, {FC, useMemo} from 'react';
+import React, {FC, useState} from 'react';
 import {IItem} from "../types/types";
 import MyImage from "./UI/image/MyImage";
 import MyButton from "./UI/button/MyButton";
@@ -10,12 +10,9 @@ import MyCounter from "./UI/counter/MyCounter";
 interface IBasketItem {
     props: IItem
 }
-interface IPrice {
-    children: React.ReactNode
-}
 const BasketItem:FC<IBasketItem> = (props) => {
-    {/*---- get all price item----*/}
-
+    {/*---- get state counter ----*/}
+    const [state, setState] = useState<number>(props.props.count)
 
     {/*---- used dispatch----*/}
     const dispatch = useDispatch()
@@ -24,6 +21,7 @@ const BasketItem:FC<IBasketItem> = (props) => {
     const deleteItem = (item:IItem) => {
         dispatch(removeItemToBasketAction(item.id))
     }
+
     return (
         <div className='basket-item'>
 
@@ -37,11 +35,12 @@ const BasketItem:FC<IBasketItem> = (props) => {
             />
             </div>
             <MyCounter
-                count={props.props.count}
+               count={state}
+               onChangeCounter={setState}
             />
             {/*---- basket price and option button----*/}
             <div className='basket-option'>
-                <div className='basket-price'>Стоимость: 0 UAH</div>
+                <div className='basket-price'>Стоимость: {state * props.props.price } UAH</div>
                 <MyButton
                     onClick={() => deleteItem(props.props)}
                 >Delete</MyButton>

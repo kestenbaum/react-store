@@ -6,32 +6,27 @@ import {IoMdArrowDropright, IoMdArrowDropleft} from "react-icons/io"
 
 interface ICounter {
     count: number
+    onChangeCounter: any
 }
 
-const MyCounter:FC<ICounter> = (props) => {
+
+
+const MyCounter:FC<ICounter> = ({count, onChangeCounter}) => {
     {/*---- state button counter ----*/}
     const [disabled, setDisabled] = useState<boolean>(false)
 
-    {/*---- state counter ----*/}
-    const [counter, setCounter] = useState<number>(0)
-
-    const getState = () => {
-       return counter + props.count
-    }
-    console.log(getState())
     {/*---- function click counter----*/}
     const addToCounter = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
-        setCounter(counter + 1)
+        onChangeCounter(count + 1)
     }
 
     const removeFromCounter = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
-        counter >= 0
-            ? setCounter(counter - 1)
+        count >= 1
+            ? onChangeCounter(count - 1)
             : setDisabled(true)
     }
-
 
     return (
         <div className={style.counter}>
@@ -48,7 +43,7 @@ const MyCounter:FC<ICounter> = (props) => {
 
             {/*---- counter ----*/}
             <div className='counter-price'>
-                {getState()}
+                {count}
             </div>
 
             <MyButton
