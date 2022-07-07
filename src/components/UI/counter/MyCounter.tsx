@@ -27,7 +27,7 @@ const MyCounter:FC<ICounter> = (props) => {
 
     const removeFromCounter = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
-        counter >= 1
+        counter >= 0
             ? setCounter(counter - 1)
             : setDisabled(true)
     }
@@ -37,7 +37,7 @@ const MyCounter:FC<ICounter> = (props) => {
         <div className={style.counter}>
             <MyButton
                 className={style.counterBtn}
-                onClick={addToCounter}
+                onClick={removeFromCounter}
             >
                 <IconContext.Provider value={{ color: "black", size: '1.5em', className: "arrow-up" }}>
                     <div style={{display: 'flex', alignItems: 'center'}}>
@@ -52,7 +52,7 @@ const MyCounter:FC<ICounter> = (props) => {
             </div>
 
             <MyButton
-                onClick={removeFromCounter}
+                onClick={addToCounter}
                 className={style.counterBtn}
                 disabled={false}
             >

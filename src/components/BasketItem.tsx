@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {FC, useMemo} from 'react';
 import {IItem} from "../types/types";
 import MyImage from "./UI/image/MyImage";
 import MyButton from "./UI/button/MyButton";
@@ -10,8 +10,13 @@ import MyCounter from "./UI/counter/MyCounter";
 interface IBasketItem {
     props: IItem
 }
-
+interface IPrice {
+    children: React.ReactNode
+}
 const BasketItem:FC<IBasketItem> = (props) => {
+    {/*---- get all price item----*/}
+
+
     {/*---- used dispatch----*/}
     const dispatch = useDispatch()
 
@@ -36,7 +41,7 @@ const BasketItem:FC<IBasketItem> = (props) => {
             />
             {/*---- basket price and option button----*/}
             <div className='basket-option'>
-                <div className='basket-price'>Стоимость: {props.props.price} UAH</div>
+                <div className='basket-price'>Стоимость: 0 UAH</div>
                 <MyButton
                     onClick={() => deleteItem(props.props)}
                 >Delete</MyButton>
