@@ -1,16 +1,20 @@
-import React, {FC, useState} from 'react';
+import React, {FC, useMemo, useState} from 'react';
 import { NavLink } from "react-router-dom";
 import {IconContext} from "react-icons";
 import {BsBasket} from "react-icons/bs";
 import MyButton from "./UI/button/MyButton";
 import MyModal from "./UI/modal/MyModal";
 import Basket from "./Basket";
+import {useTypedSelectors} from "../hooks/useTypedSelector";
 
 interface headerProps {
     logo: string
 }
 
 const Header:FC<headerProps> = (props) => {
+    {/*---- state basket----*/}
+    const state = useTypedSelectors(item => item.basket.basket)
+
     {/*---- state modal ----*/}
     const [modal, setModal] = useState<boolean>(false)
 
@@ -19,6 +23,11 @@ const Header:FC<headerProps> = (props) => {
         event.preventDefault()
         setModal(true)
     }
+
+    {/*---- calculate all price ----*/}
+    const basketFinalPrice = useMemo(() => {
+        return state.reduce((acc, item) => acc + item.price, 0)
+    }, [state])
 
     return (
         <header className='header'>
@@ -57,7 +66,7 @@ const Header:FC<headerProps> = (props) => {
                                         <BsBasket />
                                     </div>
                                 </IconContext.Provider>
-                                <div className='basket-price'>0 UAH</div>
+                                <div className='basket-price'>{basketFinalPrice} UAH</div>
                             </div>
                         </MyButton>
                     </div>

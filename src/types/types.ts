@@ -4,4 +4,5 @@ export interface IItem {
     img: any
     body:string
     price: number
+    count: number
 }

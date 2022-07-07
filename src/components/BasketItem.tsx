@@ -4,6 +4,7 @@ import MyImage from "./UI/image/MyImage";
 import MyButton from "./UI/button/MyButton";
 import {useDispatch} from "react-redux";
 import {removeItemToBasketAction} from "../store/reducers/basketReducer";
+import MyCounter from "./UI/counter/MyCounter";
 
 {/*---- interface ----*/}
 interface IBasketItem {
@@ -30,7 +31,9 @@ const BasketItem:FC<IBasketItem> = (props) => {
                     alt={"images"}
             />
             </div>
-
+            <MyCounter
+                count={props.props.count}
+            />
             {/*---- basket price and option button----*/}
             <div className='basket-option'>
                 <div className='basket-price'>Стоимость: {props.props.price} UAH</div>

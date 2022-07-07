@@ -1,0 +1,22 @@
+.counter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.counter-price{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+.counterBtn {
+    background: #fff;
+    border: none;
+    cursor: pointer;
+}
+.arrow-up{
+    display: flex;
+    align-items: center;
+    background: #afabab;
+    height: 30px;
+}

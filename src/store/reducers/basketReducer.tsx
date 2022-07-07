@@ -13,8 +13,6 @@ const initialState:IBasket = {
 }
 export const basketReducer = (state = initialState, action:IAction) => {
     switch (action.type){
-        case "GET_PRICE":
-            return {...state}
         case "ADD_ITEM_BASKET":
             return {...state, basket: [...state.basket, action.payload]}
         case "REMOVE_ITEM_BASKET":
