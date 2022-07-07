@@ -9,9 +9,8 @@ interface ICounter {
     onChangeCounter: any
 }
 
-
-
 const MyCounter:FC<ICounter> = ({count, onChangeCounter}) => {
+
     {/*---- state button counter ----*/}
     const [disabled, setDisabled] = useState<boolean>(false)
 

@@ -12,8 +12,6 @@ interface headerProps {
 }
 
 const Header:FC<headerProps> = (props) => {
-    {/*---- state basket----*/}
-    const state = useTypedSelectors(item => item.basket.basket)
 
     {/*---- state modal ----*/}
     const [modal, setModal] = useState<boolean>(false)
@@ -23,11 +21,6 @@ const Header:FC<headerProps> = (props) => {
         event.preventDefault()
         setModal(true)
     }
-
-    {/*---- calculate all price ----*/}
-    const basketFinalPrice = useMemo(() => {
-        return state.reduce((acc, item) => acc + item.price, 0)
-    }, [state])
 
     return (
         <header className='header'>
@@ -66,7 +59,7 @@ const Header:FC<headerProps> = (props) => {
                                         <BsBasket />
                                     </div>
                                 </IconContext.Provider>
-                                <div className='basket-price'>{basketFinalPrice} UAH</div>
+                                <div className='basket-price'>0 UAH</div>
                             </div>
                         </MyButton>
                     </div>

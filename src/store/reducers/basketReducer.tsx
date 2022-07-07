@@ -22,5 +22,5 @@ export const basketReducer = (state = initialState, action:IAction) => {
     }
 }
 
-export const addItemToBasketAction = (payload:IItem) => ({type: "ADD_ITEM_BASKET", payload})
+export const addItemToBasketAction = (payload:any) => ({type: "ADD_ITEM_BASKET", payload})
 export const removeItemToBasketAction = (payload:number) => ({type: "REMOVE_ITEM_BASKET", payload})
