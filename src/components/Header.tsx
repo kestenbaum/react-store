@@ -1,4 +1,4 @@
-import React, {FC, useMemo, useState} from 'react';
+import React, {FC, useState} from 'react';
 import { NavLink } from "react-router-dom";
 import {IconContext} from "react-icons";
 import {BsBasket} from "react-icons/bs";
@@ -7,20 +7,10 @@ import MyModal from "./UI/modal/MyModal";
 import Basket from "./Basket";
 import {useTypedSelectors} from "../hooks/useTypedSelector";
 
-interface headerProps {
-    logo: string
-}
-
-const Header:FC<headerProps> = (props) => {
+const Header:FC = (props) => {
 
     {/*---- state modal ----*/}
     const [modal, setModal] = useState<boolean>(false)
-
-    {/*---- functions to basket----*/}
-    const openBasket = (event:React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault()
-        setModal(true)
-    }
 
     return (
         <header className='header'>
@@ -35,7 +25,7 @@ const Header:FC<headerProps> = (props) => {
             {/*---- content ----*/}
             <div className='container'>
                 <div className='header-wrapper'>
-                    <div className='header-logo'>{props.logo}</div>
+                    <div className='header-logo'>Logo</div>
                     <div className='header-nav'>
                         <NavLink
                             className='nav-link'
@@ -50,7 +40,7 @@ const Header:FC<headerProps> = (props) => {
                             to="/about"
                         >ABOUT</NavLink>
                         <MyButton
-                            onClick={openBasket}
+                            onClick={() => setModal(true)}
                             style={{background: "#fff", padding: 0, border: "none"}}
                         >
                             <div className='header-basket'>

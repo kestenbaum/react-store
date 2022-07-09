@@ -1,11 +1,10 @@
-import React, {FC, useEffect, useMemo, useState} from 'react';
+import React, {FC, useMemo, useState} from 'react';
 import {IItem} from "../types/types";
 import MyImage from "./UI/image/MyImage";
 import MyButton from "./UI/button/MyButton";
 import {useDispatch} from "react-redux";
 import {removeItemToBasketAction} from "../store/reducers/basketReducer";
 import MyCounter from "./UI/counter/MyCounter";
-import {useTypedSelectors} from "../hooks/useTypedSelector";
 
 {/*---- interface ----*/}
 interface IBasketItem {
@@ -17,17 +16,14 @@ const BasketItem:FC<IBasketItem> = (props) => {
     {/*---- get state counter ----*/}
     const [state, setState] = useState<number>(0)
 
-    {/*---- get useEffect ----*/}
-    useEffect(() => {
-        setState(state + 1)
-    }, [props.props.count])
-
-
     {/*---- get useMemo----*/}
     const getAll = useMemo(() => {
         return state * props.props.price
     }, [state])
 
+    useMemo(() => {
+        setState(state + 1)
+    }, [props.props.count])
 
 
     {/*---- used dispatch----*/}

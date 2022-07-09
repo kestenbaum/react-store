@@ -33,7 +33,6 @@ const StoreItem:FC<IStoreItem> = ({props}) => {
             }
         }
         checkedId()
-        console.log(state)
     }
 
     return (
