@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import './style/index.css'
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import Pages from "./components/Pages";
 
 
