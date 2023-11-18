@@ -1,22 +1,12 @@
 import React, {FC} from 'react';
-import style from './MyModal.module.css'
 
-{/*---- interface ----*/}
-interface IModal {
-    props?: any
-    children: React.ReactNode
-    visible: boolean
-    setVisible?: any
-}
+import style from './MyModal.module.css'
+import {IModal} from "../../../types/types";
+
 
 const MyModal:FC<IModal> = (props) => {
-    {/*---- styles ----*/}
     const rootClasses = [style.modal]
-
-    {/*---- get props----*/}
     const {children, visible, setVisible} = props
-
-    {/*---- checked state modal ----*/}
     if (visible) rootClasses.push(style.active)
 
     return (

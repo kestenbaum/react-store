@@ -1,23 +1,14 @@
 import React, {FC} from 'react';
 import style from './MyButton.module.css'
+import {IButtonProps} from "../../../types/types";
 
-interface buttonProps
-    extends React.DetailedHTMLProps<React.BaseHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
-{
-    disabled?: boolean
-}
-
-
-const MyButton:FC<buttonProps> = (props) => {
-
-    const {children,  ...rest} = props
-
+const MyButton:FC<IButtonProps> = ({children,  ...rest}) => {
     return (
         <button
             className={style.btn}
             {...rest}
         >
-            {props.children}
+            {children}
         </button>
     );
 };

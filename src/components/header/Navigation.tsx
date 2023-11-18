@@ -1,19 +1,19 @@
 import React, {FC, useState} from 'react';
 import {NavLink} from "react-router-dom";
-import MyButton from "../UI/button/MyButton";
-import {IconContext} from "react-icons";
 import {BsBasket} from "react-icons/bs";
+import {IconContext} from "react-icons";
+
+import MyButton from "../UI/button/MyButton";
 import MyModal from "../UI/modal/MyModal";
 import Basket from "../Basket";
 
+import {data} from "../../data";
+
 const Navigation:FC = () => {
-    {/*---- state modal ----*/}
     const [modal, setModal] = useState<boolean>(false)
 
     return (
-
         <div className='header-nav'>
-            {/*---- modal window ----*/}
             <MyModal
                 visible={modal}
                 setVisible={setModal}
@@ -21,18 +21,13 @@ const Navigation:FC = () => {
                 <Basket/>
             </MyModal>
 
-            <NavLink
-                className='nav-link'
-                to= "/"
-            >HOME</NavLink>
-            <NavLink
-                className='nav-link'
-                to= "/store"
-            >STORE</NavLink>
-            <NavLink
-                className='nav-link'
-                to="/about"
-            >ABOUT</NavLink>
+            {data.map(element => {
+                return  <NavLink
+                    className='nav-link'
+                    to= {element?.to}
+                >{element?.title}</NavLink>
+            })}
+
             <MyButton
                 onClick={() => setModal(true)}
                 style={{background: "#fff", padding: 0, border: "none"}}

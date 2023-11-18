@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {Route, Routes} from "react-router-dom";
+
 import Home from "../pages/Home";
 import Store from "../pages/Store";
 import About from "../pages/About";

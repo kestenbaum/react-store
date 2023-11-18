@@ -3,8 +3,6 @@ import StoreItem from "./StoreItem";
 import {useTypedSelectors} from "../hooks/useTypedSelector";
 
 const StoreList:FC = () => {
-
-    {/*---- Get state----*/}
     const state = useTypedSelectors(item => item.store.data)
 
     return (

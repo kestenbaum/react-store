@@ -1,25 +1,18 @@
 import React, {FC, useState} from 'react';
-import style from './MyCounter.module.css'
-import MyButton from "../button/MyButton";
 import {IconContext} from "react-icons";
 import {IoMdArrowDropright, IoMdArrowDropleft} from "react-icons/io"
 
-interface ICounter {
-    count: number
-    onChangeCounter: any
-}
+import MyButton from "../button/MyButton";
+import {ICounter} from "../../../types/types";
+
+import style from './MyCounter.module.css'
 
 const MyCounter:FC<ICounter> = ({count, onChangeCounter}) => {
-
-    {/*---- state button counter ----*/}
     const [disabled, setDisabled] = useState<boolean>(false)
-
-    {/*---- function click counter----*/}
     const addToCounter = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
         onChangeCounter(count + 1)
     }
-
     const removeFromCounter = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
         count >= 1

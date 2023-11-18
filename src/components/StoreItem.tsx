@@ -1,24 +1,20 @@
 import React, {FC} from 'react';
-import MyButton from "./UI/button/MyButton";
-import MyImage from "./UI/image/MyImage";
 import {useDispatch} from "react-redux";
+
 import {addItemToBasketAction} from "../store/reducers/basketReducer";
 import {useTypedSelectors} from "../hooks/useTypedSelector";
 
-interface IStoreItem {
-    props?: any
-}
+import MyButton from "./UI/button/MyButton";
+import MyImage from "./UI/image/MyImage";
+
+import {IStoreItem} from "../types/types";
+
 
 const StoreItem:FC<IStoreItem> = ({props}) => {
-
-    const state = useTypedSelectors(item => item.basket.basket)
-    {/*---- used dispatch ----*/}
     const dispatch = useDispatch()
-
-    {/*---- Add item to basket ----*/}
+    const state = useTypedSelectors(item => item.basket.basket)
     const addItemToBasket = (event:React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
-
         const name = {
             id: props.id,
             count: 1

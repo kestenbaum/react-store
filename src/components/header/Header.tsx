@@ -1,4 +1,5 @@
-import React, {FC, useState} from 'react';
+import React, {FC} from 'react';
+
 import Navigation from "./Navigation";
 import Logo from "./Logo";
 
@@ -7,12 +8,11 @@ const Header:FC = () => {
         <header className='header'>
             <div className='container'>
                 <div className='header-wrapper'>
-                    <Logo/>
+                    <Logo logo={"Logo"}/>
                     <Navigation/>
                 </div>
             </div>
         </header>
-
     );
 };
 
