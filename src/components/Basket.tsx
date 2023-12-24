@@ -14,7 +14,6 @@ const Basket:FC = () => {
 
     return (
         <div className='basket-wrapper'>
-            {/*---- checked basket ----*/}
             {
                 state.length === 0
                     ? <div>Корзина пуста!!!</div>

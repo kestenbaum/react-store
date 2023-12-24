@@ -1,8 +1,6 @@
 import stalker from "../../assets/stalker.png"
 import dark from "../../assets/dark.jpg"
-import {IItem} from "../../types/types";
 
-{/*---- Interface reducer ----*/}
 interface IAction {
     type: string
     payload?: any
